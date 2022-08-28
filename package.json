@@ -1,0 +1,60 @@
+{
+  "name": "@raneto/theme-default",
+  "version": "0.0.0",
+  "description": "Raneto's Default Theme",
+  "authors": [
+    "Ryan Lelek <ryanlelek@gmail.com>",
+    "Gilbert Pellegrom <gilbert@pellegrom.me>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "raneto",
+    "theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Raneto/theme-default.git"
+  },
+  "bugs": "https://github.com/Raneto/theme-default/issues",
+  "contributors": [
+    "https://github.com/Raneto/theme-default/graphs/contributors"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.githubusercontent.com/Raneto/theme-default/master/LICENSE"
+    }
+  ],
+  "scripts": {
+    "build": "npm run gulp",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp default",
+    "lint": "eslint gulpfile.js"
+  },
+  "engines": {
+    "node": ">=16.16.0",
+    "npm": ">=8.11.0"
+  },
+  "devDependencies": {
+    "bootstrap": "4.6.2",
+    "bootstrap-rtl": "3.3.4",
+    "eslint": "8.23.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "6.0.1",
+    "fitvids": "2.1.1",
+    "gulp": "4.0.2",
+    "gulp-clean-css": "4.3.0",
+    "highlightjs": "9.16.2",
+    "jquery": "3.6.1",
+    "jquery-backstretch": "2.1.18",
+    "lunr": "2.3.9",
+    "lunr-languages": "1.9.0",
+    "markdown-toc": "1.2.0",
+    "marked": "4.0.19",
+    "masonry-layout": "4.2.2",
+    "popper.js": "1.16.1",
+    "sweetalert2": "11.4.29"
+  }
+}
