@@ -9,14 +9,14 @@ var minify_css = require('gulp-clean-css');
 gulp.task('vendor', function () {
 
   var source = [
-    './node_modules/jquery/**/*',
-    './node_modules/bootstrap/**/*',
-    './node_modules/popper.js/**/*',
+    './node_modules/jquery/dist/**/*',
+    './node_modules/bootstrap/dist/**/*',
+    './node_modules/popper.js/dist/**/*',
     './node_modules/bootstrap-rtl/**/*',
-    './node_modules/fitvids/**/*',
+    './node_modules/fitvids/dist/**/*',
     './node_modules/highlightjs/**/*',
-    './node_modules/masonry-layout/**/*',
-    './node_modules/sweetalert2/**/*',
+    './node_modules/masonry-layout/dist/**/*',
+    './node_modules/sweetalert2/dist/**/*',
     './node_modules/jquery-backstretch/**/*'
   ];
 
