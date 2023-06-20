@@ -1,5 +1,5 @@
 import defaultParams from './params.js'
-import { capitalizeFirstLetter, warn } from './utils.js'
+import { capitalizeFirstLetter, toArray, warn } from './utils.js'
 
 const swalStringParams = ['swal-title', 'swal-html', 'swal-footer']
 
@@ -29,9 +29,7 @@ export const getTemplateParams = (params) => {
  */
 const getSwalParams = (templateContent) => {
   const result = {}
-  /** @type {HTMLElement[]} */
-  const swalParams = Array.from(templateContent.querySelectorAll('swal-param'))
-  swalParams.forEach((param) => {
+  toArray(templateContent.querySelectorAll('swal-param')).forEach((param) => {
     showWarningsForAttributes(param, ['name', 'value'])
     const paramName = param.getAttribute('name')
     const value = param.getAttribute('value')
@@ -50,9 +48,7 @@ const getSwalParams = (templateContent) => {
  */
 const getSwalButtons = (templateContent) => {
   const result = {}
-  /** @type {HTMLElement[]} */
-  const swalButtons = Array.from(templateContent.querySelectorAll('swal-button'))
-  swalButtons.forEach((button) => {
+  toArray(templateContent.querySelectorAll('swal-button')).forEach((button) => {
     showWarningsForAttributes(button, ['type', 'color', 'aria-label'])
     const type = button.getAttribute('type')
     result[`${type}ButtonText`] = button.innerHTML
@@ -132,11 +128,10 @@ const getSwalInput = (templateContent) => {
       result.inputValue = input.getAttribute('value')
     }
   }
-  /** @type {HTMLElement[]} */
-  const inputOptions = Array.from(templateContent.querySelectorAll('swal-input-option'))
+  const inputOptions = templateContent.querySelectorAll('swal-input-option')
   if (inputOptions.length) {
     result.inputOptions = {}
-    inputOptions.forEach((option) => {
+    toArray(inputOptions).forEach((option) => {
       showWarningsForAttributes(option, ['value'])
       const optionValue = option.getAttribute('value')
       const optionName = option.innerHTML
@@ -176,7 +171,7 @@ const showWarningsForElements = (templateContent) => {
     'swal-input',
     'swal-input-option',
   ])
-  Array.from(templateContent.children).forEach((el) => {
+  toArray(templateContent.children).forEach((el) => {
     const tagName = el.tagName.toLowerCase()
     if (allowedElements.indexOf(tagName) === -1) {
       warn(`Unrecognized element <${tagName}>`)
@@ -189,7 +184,7 @@ const showWarningsForElements = (templateContent) => {
  * @param {string[]} allowedAttributes
  */
 const showWarningsForAttributes = (el, allowedAttributes) => {
-  Array.from(el.attributes).forEach((attribute) => {
+  toArray(el.attributes).forEach((attribute) => {
     if (allowedAttributes.indexOf(attribute.name) === -1) {
       warn([
         `Unrecognized attribute "${attribute.name}" on <${el.tagName.toLowerCase()}>.`,

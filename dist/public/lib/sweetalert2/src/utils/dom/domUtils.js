@@ -1,6 +1,6 @@
 import { getCancelButton, getConfirmButton, getDenyButton, getTimerProgressBar } from './getters.js'
 import { iconTypes, swalClasses } from '../classes.js'
-import { warn } from '../utils.js'
+import { toArray, warn } from '../utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -19,10 +19,10 @@ export const setInnerHtml = (elem, html) => {
   if (html) {
     const parser = new DOMParser()
     const parsed = parser.parseFromString(html, `text/html`)
-    Array.from(parsed.querySelector('head').childNodes).forEach((child) => {
+    toArray(parsed.querySelector('head').childNodes).forEach((child) => {
       elem.appendChild(child)
     })
-    Array.from(parsed.querySelector('body').childNodes).forEach((child) => {
+    toArray(parsed.querySelector('body').childNodes).forEach((child) => {
       elem.appendChild(child)
     })
   }
@@ -46,12 +46,8 @@ export const hasClass = (elem, className) => {
   return true
 }
 
-/**
- * @param {HTMLElement} elem
- * @param {SweetAlertOptions} params
- */
 const removeCustomClasses = (elem, params) => {
-  Array.from(elem.classList).forEach((className) => {
+  toArray(elem.classList).forEach((className) => {
     if (
       !Object.values(swalClasses).includes(className) &&
       !Object.values(iconTypes).includes(className) &&
@@ -62,11 +58,6 @@ const removeCustomClasses = (elem, params) => {
   })
 }
 
-/**
- * @param {HTMLElement} elem
- * @param {SweetAlertOptions} params
- * @param {string} className
- */
 export const applyCustomClass = (elem, params, className) => {
   removeCustomClasses(elem, params)
 
@@ -85,18 +76,18 @@ export const applyCustomClass = (elem, params, className) => {
 
 /**
  * @param {HTMLElement} popup
- * @param {import('./renderers/renderInput').InputClass} inputClass
+ * @param {string} inputType
  * @returns {HTMLInputElement | null}
  */
-export const getInput = (popup, inputClass) => {
-  if (!inputClass) {
+export const getInput = (popup, inputType) => {
+  if (!inputType) {
     return null
   }
-  switch (inputClass) {
+  switch (inputType) {
     case 'select':
     case 'textarea':
     case 'file':
-      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses[inputClass]}`)
+      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses[inputType]}`)
     case 'checkbox':
       return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.checkbox} input`)
     case 'radio':
@@ -112,7 +103,7 @@ export const getInput = (popup, inputClass) => {
 }
 
 /**
- * @param {HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement} input
+ * @param {HTMLInputElement} input
  */
 export const focusInput = (input) => {
   input.focus()
@@ -128,7 +119,7 @@ export const focusInput = (input) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[] | readonly string[]} classList
+ * @param {string | string[]} classList
  * @param {boolean} condition
  */
 export const toggleClass = (target, classList, condition) => {
@@ -151,7 +142,7 @@ export const toggleClass = (target, classList, condition) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[] | readonly string[]} classList
+ * @param {string | string[]} classList
  */
 export const addClass = (target, classList) => {
   toggleClass(target, classList, true)
@@ -159,7 +150,7 @@ export const addClass = (target, classList) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[] | readonly string[]} classList
+ * @param {string | string[]} classList
  */
 export const removeClass = (target, classList) => {
   toggleClass(target, classList, false)
@@ -173,11 +164,10 @@ export const removeClass = (target, classList) => {
  * @returns {HTMLElement | null}
  */
 export const getDirectChildByClass = (elem, className) => {
-  const children = Array.from(elem.children)
-  for (let i = 0; i < children.length; i++) {
-    const child = children[i]
-    if (child instanceof HTMLElement && hasClass(child, className)) {
-      return child
+  const childNodes = toArray(elem.childNodes)
+  for (let i = 0; i < childNodes.length; i++) {
+    if (hasClass(childNodes[i], className)) {
+      return childNodes[i]
     }
   }
 }
@@ -213,54 +203,26 @@ export const hide = (elem) => {
   elem.style.display = 'none'
 }
 
-/**
- * @param {HTMLElement} parent
- * @param {string} selector
- * @param {string} property
- * @param {string} value
- */
 export const setStyle = (parent, selector, property, value) => {
-  /** @type {HTMLElement} */
   const el = parent.querySelector(selector)
   if (el) {
     el.style[property] = value
   }
 }
 
-/**
- * @param {HTMLElement} elem
- * @param {any} condition
- * @param {string} display
- */
-export const toggle = (elem, condition, display = 'flex') => {
+export const toggle = (elem, condition, display) => {
   condition ? show(elem, display) : hide(elem)
 }
 
-/**
- * borrowed from jquery $(elem).is(':visible') implementation
- *
- * @param {HTMLElement} elem
- * @returns {boolean}
- */
+// borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
-/**
- * @returns {boolean}
- */
 export const allButtonsAreHidden = () =>
   !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton())
 
-/**
- * @returns {boolean}
- */
 export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
 
-/**
- * borrowed from https://stackoverflow.com/a/46352119
- *
- * @param {HTMLElement} elem
- * @returns {boolean}
- */
+// borrowed from https://stackoverflow.com/a/46352119
 export const hasCssAnimation = (elem) => {
   const style = window.getComputedStyle(elem)
 
@@ -270,10 +232,6 @@ export const hasCssAnimation = (elem) => {
   return animDuration > 0 || transDuration > 0
 }
 
-/**
- * @param {number} timer
- * @param {boolean} reset
- */
 export const animateTimerProgressBar = (timer, reset = false) => {
   const timerProgressBar = getTimerProgressBar()
   if (isVisible(timerProgressBar)) {
