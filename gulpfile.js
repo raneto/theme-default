@@ -12,7 +12,7 @@ gulp.task('vendor', function () {
     './node_modules/jquery/dist/**/*',
     './node_modules/bootstrap/dist/**/*',
     './node_modules/popper.js/dist/**/*',
-    './node_modules/bootstrap-rtl/**/*',
+    './node_modules/bootstrap-rtl/dist/**/*',
     './node_modules/fitvids/dist/**/*',
     './node_modules/highlightjs/**/*',
     './node_modules/masonry-layout/dist/**/*',
