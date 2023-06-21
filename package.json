@@ -36,7 +36,7 @@
     "npm": ">=9.5.0"
   },
   "devDependencies": {
-    "bootstrap": "4.6.2",
+    "bootstrap": "5.3.0",
     "bootstrap-rtl": "3.3.4",
     "eslint": "8.43.0",
     "eslint-config-standard": "17.1.0",
@@ -54,7 +54,6 @@
     "markdown-toc": "1.2.0",
     "marked": "5.1.0",
     "masonry-layout": "4.2.2",
-    "popper.js": "1.16.1",
     "sweetalert2": "11.4.8"
   }
 }

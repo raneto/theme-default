@@ -11,7 +11,7 @@ gulp.task('vendor', function () {
   var source = [
     './node_modules/jquery/dist/**/*',
     './node_modules/bootstrap/dist/**/*',
-    './node_modules/popper.js/dist/**/*',
+    './node_modules/@popperjs/core/dist/**/*',
     './node_modules/bootstrap-rtl/dist/**/*',
     './node_modules/fitvids/dist/**/*',
     './node_modules/highlightjs/**/*',

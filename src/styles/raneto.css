@@ -1,4 +1,13 @@
 
+a {
+  text-decoration: none;
+}
+
+.border-round-left {
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+}
+
 .header {
   color: #CCC;
   background: #2C323D;
@@ -9,7 +18,7 @@
   padding-bottom: 20px;
 }
 
-.header a {
+.header .logo {
   color: #DDD;
 }
 
@@ -79,16 +88,15 @@ margin: 25px 0 10px 0;
   color: #444;
 }
 
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: .3rem;
+}
+
 .page-home .header .search-form {
   display: none;
-}
-
-.home-search {
-  text-align: center;
-}
-
-.home-search div form div.form-group {
-  margin: 0 auto;
 }
 
 .home-categories {
@@ -209,13 +217,5 @@ margin: 25px 0 10px 0;
 }
 
 @media only screen and (max-width: 767px) {
-
-  .home-search .form-group {
-    margin-bottom: 0;
-  }
-
-  #home-search {
-    margin-bottom: 10px;
-  }
 
 }
