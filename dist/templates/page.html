@@ -14,10 +14,10 @@
             <h5 class="category-title">
 				{{^config.menu_on_page_collapsible}}{{lang.global.mainArticles}}{{/config.menu_on_page_collapsible}}
 				{{#config.menu_on_page_collapsible}}
-					<a href="#category_{{sort}}" data-toggle="collapse">{{lang.global.mainArticles}}</a>
+					<a href="#category_{{sort}}" data-bs-toggle="collapse">{{lang.global.mainArticles}}</a>
 				{{/config.menu_on_page_collapsible}}
 				{{#canEdit}}
-					<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>
+					<a class="add-page" data-bs-toggle="modal" data-bs-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>
 				{{/canEdit}}
 			</h5>
           {{/is_index}}
@@ -25,10 +25,10 @@
             <h5 class="category-title">
 				{{^config.menu_on_page_collapsible}}{{title}}{{/config.menu_on_page_collapsible}}
 				{{#config.menu_on_page_collapsible}}
-					<a href="#category_{{sort}}" data-toggle="collapse">{{title}}</a>
+					<a href="#category_{{sort}}" data-bs-toggle="collapse">{{title}}</a>
 				{{/config.menu_on_page_collapsible}}
 				{{#canEdit}}
-					<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>
+					<a class="add-page" data-bs-toggle="modal" data-bs-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>
 				{{/canEdit}}
 			</h5>
           {{/is_index}}
@@ -68,13 +68,13 @@
     <section class="content">
 
       {{#canEdit}}
-        <div class="btn-group btn-group-sm float-right">
-          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="btn-group btn-group-sm float-end">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{lang.page.actions}} <span class="caret"></span>
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="{{current_url}}/edit">{{lang.page.editPage}}</a>
-            <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal">{{lang.page.deletePage}}</a>
+            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal">{{lang.page.deletePage}}</a>
           </div>
         </div>
       {{/canEdit}}
@@ -85,11 +85,11 @@
 
       <div class="page-meta clearfix">
         {{#config.support_email}}
-          <div class="contact-support float-left">
+          <div class="contact-support float-start">
             <span class="glyphicon glyphicon-envelope"></span> {{lang.page.needHelp}} <a href="mailto:{{config.support_email}}">{{lang.page.getInTouch}}</a>
           </div>
         {{/config.support_email}}
-        <div class="last-updated float-right">
+        <div class="last-updated float-end">
           {{lang.global.lastUpdated}} {{last_modified}}
         </div>
       </div>

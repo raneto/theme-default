@@ -42,12 +42,12 @@
 
                     {{^googleoauth}}
                       <form role="form" action="" method="post" class="login-form">
-                        <div class="form-group">
-                          <label class="sr-only" for="form-username">{{lang.login.username}}</label>
+                        <div>
+                          <label class="form-label visually-hidden" for="form-username">{{lang.login.username}}</label>
                             <input tabindex="1" type="text" name="username" placeholder="{{lang.login.username}}" class="form-username form-control" id="form-username">
                           </div>
-                          <div class="form-group">
-                            <label class="sr-only" for="form-password">{{lang.login.password}}</label>
+                          <div>
+                            <label class="form-label visually-hidden" for="form-password">{{lang.login.password}}</label>
                             <input tabindex="2" type="password" name="password" placeholder="{{lang.login.password}}" class="form-password form-control" id="form-password">
                           </div>
                           <button type="submit" class="btn">{{lang.login.login}}</button>
@@ -61,7 +61,7 @@
     <footer class="footer">
         <div class="container-fluid">
             {{#config.copyright}}
-            <p class="copyright float-right">{{{config.copyright}}}</p>
+            <p class="copyright float-end">{{{config.copyright}}}</p>
             {{/config.copyright}}
         </div>
     </footer>

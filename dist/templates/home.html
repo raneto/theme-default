@@ -1,16 +1,16 @@
-<div class="home-search jumbotron row">
-  <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <form class="search-form form-inline" action="{{config.base_url}}/">
-      <div class="form-group">
-        <label class="sr-only" for="home-search">{{lang.home.searchKnowledgeBase}}</label>
-        <input type="search" class="form-control form-control-lg" name="search" id="home-search" size="50" placeholder="{{lang.home.searchKnowledgeBase}}">
+<div class="row jumbotron p-5">
+  <div class="col col-md-6 offset-md-3">
+    <form class="search-form" action="{{config.base_url}}/">
+      <div class="input-group">
+        <label for="home-search" class="form-label visually-hidden">{{lang.home.searchKnowledgeBase}}</label>
+        <input id="home-search" type="search" class="form-control form-control-lg border-round-left" name="search" placeholder="{{lang.home.searchKnowledgeBase}}">
         <button type="submit" class="btn btn-primary btn-lg">{{lang.global.search}}</button>
       </div>
     </form>
   </div>
 </div>
 
-<div class="home-categories row">
+<div class="row home-categories">
   {{#pages}}
     {{#is_index}}
       {{#files.length}}
