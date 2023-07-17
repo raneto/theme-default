@@ -32,13 +32,13 @@
     "lint": "eslint gulpfile.js"
   },
   "engines": {
-    "node": ">=18.15.0",
-    "npm": ">=9.5.0"
+    "node": ">=18.16.0",
+    "npm": ">=9.8.0"
   },
   "devDependencies": {
     "bootstrap": "5.3.0",
     "bootstrap-rtl": "3.3.4",
-    "eslint": "8.43.0",
+    "eslint": "8.45.0",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-node": "11.1.0",
@@ -52,7 +52,7 @@
     "lunr": "2.3.9",
     "lunr-languages": "1.12.0",
     "markdown-toc": "1.2.0",
-    "marked": "5.1.0",
+    "marked": "5.1.1",
     "masonry-layout": "4.2.2",
     "sweetalert2": "11.4.8"
   }
