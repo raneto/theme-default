@@ -14,7 +14,7 @@ gulp.task('vendor', function () {
     './node_modules/@popperjs/core/dist/**/*',
     './node_modules/bootstrap-rtl/dist/**/*',
     './node_modules/fitvids/dist/**/*',
-    './node_modules/highlightjs/**/*',
+    './node_modules/highlight.js/**/*',
     './node_modules/masonry-layout/dist/**/*',
     './node_modules/sweetalert2/dist/**/*',
     './node_modules/jquery-backstretch/**/*'

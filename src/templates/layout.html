@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{config.locale}}">
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{{#meta.title}}{{meta.title}} - {{/meta.title}}{{config.site_title}}</title>
@@ -10,7 +9,7 @@
 
   <link rel="shortcut icon" href="{{config.base_url}}/favicon.ico">
   <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{config.base_url}}/lib/highlightjs/styles/solarized_light.css">
+  <link rel="stylesheet" href="{{config.base_url}}/lib/highlight.js/styles/a11y-light.min.css">
   <script>var rn_base_url = "{{config.base_url}}";</script>
   <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
   <link rel="stylesheet" href="{{config.base_url}}/styles/ghostdown.css">
@@ -140,7 +139,8 @@
   <script src="{{config.base_url}}/lib/jquery/dist/jquery.min.js"></script>
   <script src="{{config.base_url}}/lib/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="{{config.base_url}}/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="{{config.base_url}}/lib/highlightjs/highlight.pack.min.js"></script>
+  <!-- TODO: Move back to package.json include -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="{{config.base_url}}/lib/fitvids/dist/fitvids.min.js"></script>
   <script src="{{config.base_url}}/lib/masonry-layout/dist/masonry.pkgd.min.js"></script>
   <script src="{{config.base_url}}/scripts/ghostdown.js"></script>
