@@ -1,5 +1,5 @@
 
-;(function ($, hljs) {
+;(function ($) {
 
   "use strict";
 
@@ -14,7 +14,7 @@
     if ($(".content").length) {
 
       // Syntax highlighting
-      hljs.initHighlightingOnLoad();
+      hljs.highlightAll();
 
       // Add Bootstrap styling to tables
       $(".content table").addClass("table");
