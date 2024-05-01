@@ -1,4 +1,9 @@
 
+UNRELEASED / v0.4.0
+====================
+  * **[Deps]** Swap SweetAlert2 `v11.4.8` to fork `@fixhq/sweetalert2 v11.10.8` without protestware
+  * **[Deps]** Remove `markdown-toc` as it is unused.
+
 2024.04.30 / v0.3.0
 ====================
   * **[Fix]** Word count restored in editor

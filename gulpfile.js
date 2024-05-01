@@ -16,7 +16,7 @@ gulp.task('vendor', function () {
     './node_modules/fitvids/dist/**/*',
     './node_modules/highlight.js/**/*',
     './node_modules/masonry-layout/dist/**/*',
-    './node_modules/sweetalert2/dist/**/*',
+    './node_modules/@fixhq/sweetalert2/dist/**/*',
     './node_modules/jquery-backstretch/**/*'
   ];
 

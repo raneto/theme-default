@@ -36,6 +36,7 @@
     "npm": ">=10.5.0"
   },
   "devDependencies": {
+    "@fixhq/sweetalert2": "11.10.8",
     "bootstrap": "5.3.3",
     "bootstrap-rtl": "3.3.4",
     "eslint": "8.57.0",
@@ -51,7 +52,6 @@
     "jquery-backstretch": "2.1.18",
     "lunr": "2.3.9",
     "lunr-languages": "1.14.0",
-    "masonry-layout": "4.2.2",
-    "sweetalert2": "11.4.8"
+    "masonry-layout": "4.2.2"
   }
 }
