@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="{{config.locale}}">
+<html lang="{{config.locale}}"{{#config.rtl_layout}} dir="rtl"{{/config.rtl_layout}}>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{{#meta.title}}{{meta.title}} - {{/meta.title}}{{config.site_title}}</title>
   {{#meta.description}}<meta name="description" content="{{meta.description}}">{{/meta.description}}
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="shortcut icon" href="{{config.base_url}}/favicon.ico">
+
+  {{^config.rtl_layout}}
   <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.min.css">
+  {{/config.rtl_layout}}
+  {{#config.rtl_layout}}
+  <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.rtl.css">
+  <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.rtl.min.css">
+  {{/config.rtl_layout}}
   <link rel="stylesheet" href="{{config.base_url}}/lib/highlight.js/styles/a11y-light.min.css">
   <script>var rn_base_url = "{{config.base_url}}";</script>
   <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
   <link rel="stylesheet" href="{{config.base_url}}/styles/ghostdown.css">
-  {{#config.rtl_layout}}
-  <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.rtl.css">
-  <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
-  {{/config.rtl_layout}}
 
   {{{config.analytics}}}
 

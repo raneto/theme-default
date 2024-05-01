@@ -13,7 +13,6 @@ gulp.task('vendor', function () {
     './node_modules/bootstrap/dist/css/**/*.min.css',
     './node_modules/bootstrap/dist/js/**/bootstrap.min.js',
     './node_modules/@popperjs/core/dist/umd/**/*.min.js',
-    './node_modules/bootstrap-rtl/dist/**/*',
     './node_modules/fitvids/dist/**/*.min.js',
     './node_modules/highlight.js/styles/**/*.min.css',
     './node_modules/masonry-layout/dist/**/*.min.js',
