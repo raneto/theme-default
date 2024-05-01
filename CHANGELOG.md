@@ -1,5 +1,5 @@
 
-UNRELEASED / v0.4.0
+2024.05.01 / v0.4.0
 ====================
   * **[Deps]** Swap SweetAlert2 `v11.4.8` to fork `@fixhq/sweetalert2@v11.10.8` without protestware
   * **[Deps]** Upgrade `gulp` from `v4.0.2` to `v5.0.0`.
