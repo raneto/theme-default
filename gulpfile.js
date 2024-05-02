@@ -1,12 +1,14 @@
 "use strict";
 
 // Modules
-var gulp = require("gulp");
-var minify_css = require("gulp-clean-css");
+const gulp = require("gulp");
+const minify_js = require("gulp-uglify");
+const minify_css = require("gulp-clean-css");
+//const minify_html = require("gulp-htmlmin");
 
 // Vendor Files - Includes CSS, JS, and Images
 gulp.task("vendor", function () {
-  var source = [
+  const source = [
     "./node_modules/jquery/dist/**/*.min.js",
     "./node_modules/bootstrap/dist/css/**/*.min.css",
     "./node_modules/bootstrap/dist/js/**/bootstrap.min.js",
@@ -18,15 +20,21 @@ gulp.task("vendor", function () {
     "./node_modules/jquery-backstretch/*.min.js",
   ];
 
-  //var dest = 'themes/default/public/lib';
-  var dest = "./dist/public/lib";
+  //const dest = 'themes/default/public/lib';
+  const dest = "./dist/public/lib";
 
   return gulp.src(source, { base: "./node_modules" }).pipe(gulp.dest(dest));
 });
 
 // HTML
 gulp.task("html-templates", function () {
-  return gulp.src("./src/templates/*.html").pipe(gulp.dest("./dist/templates"));
+  return gulp.src("./src/templates/*.html")
+    // Cannot use due to Mustache/Hogan
+    // .pipe(minify_html({
+    //   collapseWhitespace: true,
+    //   removeComments: true
+    // }))
+    .pipe(gulp.dest("./dist/templates"));
 });
 
 // CSS
@@ -41,6 +49,7 @@ gulp.task("css", function () {
 gulp.task("js", function () {
   return gulp
     .src(["./src/scripts/*.js"])
+    .pipe(minify_js())
     .pipe(gulp.dest("./dist/public/scripts"));
 });
 
