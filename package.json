@@ -49,8 +49,6 @@
     "highlight.js": "11.9.0",
     "jquery": "3.7.1",
     "jquery-backstretch": "2.1.18",
-    "lunr": "2.3.9",
-    "lunr-languages": "1.14.0",
     "masonry-layout": "4.2.2"
   }
 }
