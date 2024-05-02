@@ -29,7 +29,9 @@
     "build": "npm run gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "gulp default",
-    "lint": "eslint gulpfile.js"
+    "lint": "eslint gulpfile.js",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write ."
   },
   "engines": {
     "node": ">=20.12.2",
@@ -49,6 +51,7 @@
     "highlight.js": "11.9.0",
     "jquery": "3.7.1",
     "jquery-backstretch": "2.1.18",
-    "masonry-layout": "4.2.2"
+    "masonry-layout": "4.2.2",
+    "prettier": "3.2.5"
   }
 }

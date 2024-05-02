@@ -1,2 +1,1 @@
-Raneto Theme: Default
-=====================
+# Raneto Theme: Default

@@ -1,7 +1,7 @@
 * {
   direction: rtl;
   unicode-bidi: embed;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .header .logo {
@@ -25,15 +25,10 @@
   padding-right: 0;
 }
 
-.header
-.container-fluid
-.row
-.col-sm-6
-form {
+.header .container-fluid .row .col-sm-6 form {
   float: left !important;
 }
 
-.content
-.btn-group {
+.content .btn-group {
   float: left !important;
 }

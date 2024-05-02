@@ -1,51 +1,101 @@
-
 <div class="row">
   <div class="col-sm-12">
-    {{#meta.title}}<h1 class="title">{{meta.title}}</h1>{{/meta.title}}
+    {{#meta.title}}
+    <h1 class="title">{{meta.title}}</h1>
+    {{/meta.title}}
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-6">
-
     <section class="content">
-      <div class="alert alert-success" id="edit-status" style="display: none;" role="alert"></div>
-      <div class="btn-group btn-group-sm float-end" role="group" aria-label="...">
-        <button type="button" class="btn btn-primary close-edit">{{lang.global.close}}</button>
-        <button type="button" class="btn btn-success save-page">{{lang.global.save}}</button>
+      <div
+        class="alert alert-success"
+        id="edit-status"
+        style="display: none"
+        role="alert"
+      ></div>
+      <div
+        class="btn-group btn-group-sm float-end"
+        role="group"
+        aria-label="..."
+      >
+        <button type="button" class="btn btn-primary close-edit">
+          {{lang.global.close}}
+        </button>
+        <button type="button" class="btn btn-success save-page">
+          {{lang.global.save}}
+        </button>
       </div>
       <h3>{{lang.global.editor}}</h3>
       <p class="entry-word-count"></p>
 
       <div>
-        <div class="card-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div
+          class="card-group"
+          id="accordion"
+          role="tablist"
+          aria-multiselectable="true"
+        >
           <div class="card">
-
             <div class="card-header" role="tab" id="headingOne">
               <h4 class="card-title">
-                <a role="button" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <a
+                  role="button"
+                  data-bs-toggle="collapse"
+                  data-bs-parent="#accordion"
+                  href="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
                   {{lang.edit.headerMetaInfo}}
                 </a>
               </h4>
             </div>
-            <div id="collapseOne" class="card-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
+            <div
+              id="collapseOne"
+              class="card-collapse collapse out"
+              role="tabpanel"
+              aria-labelledby="headingOne"
+            >
               <div class="card-body">
                 <div>
-                  <label for="entry-metainfo-title" class="form-label col-sm-3">{{lang.edit.lableMetaTitle}}</label>
+                  <label for="entry-metainfo-title" class="form-label col-sm-3"
+                    >{{lang.edit.lableMetaTitle}}</label
+                  >
                   <div class="col-sm-9">
-                    <input id="entry-metainfo-title" type="text" value="{{{meta.custom_title}}}" class="form-control"></input>
+                    <input
+                      id="entry-metainfo-title"
+                      type="text"
+                      value="{{{meta.custom_title}}}"
+                      class="form-control"
+                    />
                   </div>
                 </div>
                 <div>
-                  <label for="entry-metainfo-title" class="form-label col-sm-3">{{lang.edit.lableMetaDescription}}</label>
+                  <label for="entry-metainfo-title" class="form-label col-sm-3"
+                    >{{lang.edit.lableMetaDescription}}</label
+                  >
                   <div class="col-sm-9">
-                    <input id="entry-metainfo-description" type="text" value="{{{meta.description}}}" class="form-control"></input>
+                    <input
+                      id="entry-metainfo-description"
+                      type="text"
+                      value="{{{meta.description}}}"
+                      class="form-control"
+                    />
                   </div>
                 </div>
                 <div>
-                  <label for="entry-metainfo-title" class="form-label col-sm-3">{{lang.edit.lableMetaSort}}</label>
+                  <label for="entry-metainfo-title" class="form-label col-sm-3"
+                    >{{lang.edit.lableMetaSort}}</label
+                  >
                   <div class="col-sm-9">
-                    <input id="entry-metainfo-sort" type="number" value="{{{meta.sort}}}" class="form-control"></input>
+                    <input
+                      id="entry-metainfo-sort"
+                      type="number"
+                      value="{{{meta.sort}}}"
+                      class="form-control"
+                    />
                   </div>
                 </div>
               </div>
@@ -57,16 +107,21 @@
         </div>
       </div>
 
-      
-      <div class="btn-group btn-group-sm float-end" role="group" aria-label="...">
-        <button type="button" class="btn btn-primary close-edit">{{lang.global.close}}</button>
-        <button type="button" class="btn btn-success save-page">{{lang.global.save}}</button>
+      <div
+        class="btn-group btn-group-sm float-end"
+        role="group"
+        aria-label="..."
+      >
+        <button type="button" class="btn btn-primary close-edit">
+          {{lang.global.close}}
+        </button>
+        <button type="button" class="btn btn-success save-page">
+          {{lang.global.save}}
+        </button>
       </div>
     </section>
-
   </div>
   <div class="col-sm-6">
-
     <section class="content">
       <h3>{{lang.edit.preview}}</h3>
       <div class="entry-preview-content">
@@ -78,6 +133,5 @@
         </div>
       </div>
     </section>
-
   </div>
 </div>
