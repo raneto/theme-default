@@ -1,3 +1,10 @@
+
+# 2024.05.02 / v0.5.0
+- **[Edit]** Updated Icons
+- **[Perf]** Minify JS files
+- **[Perf]** Remove unused packages lunr and lunr-languages
+- **[Misc]** Add Prettier
+
 # 2024.05.01 / v0.4.0
 
 - **[Deps]** Swap SweetAlert2 `v11.4.8` to fork `@fixhq/sweetalert2@v11.10.8` without protestware
