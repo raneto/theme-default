@@ -44,7 +44,7 @@
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-promise": "6.2.0",
     "fitvids": "2.1.1",
     "gulp": "5.0.0",
     "gulp-clean-css": "4.3.0",
@@ -53,6 +53,6 @@
     "jquery": "3.7.1",
     "jquery-backstretch": "2.1.18",
     "masonry-layout": "4.2.2",
-    "prettier": "3.2.5"
+    "prettier": "3.3.2"
   }
 }
