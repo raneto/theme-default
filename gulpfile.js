@@ -28,13 +28,16 @@ gulp.task("vendor", function () {
 
 // HTML
 gulp.task("html-templates", function () {
-  return gulp.src("./src/templates/*.html")
-    // Cannot use due to Mustache/Hogan
-    // .pipe(minify_html({
-    //   collapseWhitespace: true,
-    //   removeComments: true
-    // }))
-    .pipe(gulp.dest("./dist/templates"));
+  return (
+    gulp
+      .src("./src/templates/*.html")
+      // Cannot use due to Mustache/Hogan
+      // .pipe(minify_html({
+      //   collapseWhitespace: true,
+      //   removeComments: true
+      // }))
+      .pipe(gulp.dest("./dist/templates"))
+  );
 });
 
 // CSS
