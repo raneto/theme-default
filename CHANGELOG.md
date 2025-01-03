@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025.01.02 / v0.6.0
+
+- **[Misc]** Upgrade packages
+
 ## 2024.05.02 / v0.5.0
 
 - **[Edit]** Updated Icons
