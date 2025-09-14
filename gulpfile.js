@@ -1,10 +1,8 @@
-"use strict";
-
 // Modules
-const gulp = require("gulp");
-const minify_js = require("gulp-uglify");
-const minify_css = require("gulp-clean-css");
-//const minify_html = require("gulp-htmlmin");
+import gulp from "gulp";
+import minify_js from "gulp-uglify";
+import minify_css from "gulp-clean-css";
+//import minify_html from 'gulp-htmlmin';
 
 // Vendor Files - Includes CSS, JS, and Images
 gulp.task("vendor", function () {
@@ -78,5 +76,5 @@ gulp.task(
     "js",
     "static",
     "zocial-temp",
-  ]),
+  ])
 );

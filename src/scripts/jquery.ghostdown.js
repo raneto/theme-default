@@ -18,23 +18,23 @@
         "change",
         $.proxy(function () {
           this._updatePreview();
-        }, this),
+        }, this)
       );
 
       $(".entry-markdown header, .entry-preview header", this.element).click(
         function (e) {
           $(".entry-markdown, .entry-preview", this.element).removeClass(
-            "active",
+            "active"
           );
           $(e.target, this.element).closest("section").addClass("active");
-        },
+        }
       );
 
       $(".CodeMirror-scroll", this.element).on(
         "scroll",
         $.proxy(function (e) {
           this._syncScroll(e);
-        }, this),
+        }, this)
       );
 
       // Shadow on Markdown if scrolled

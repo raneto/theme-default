@@ -50,7 +50,7 @@
               window.location = base_url + redirect.join("/");
               break;
           }
-        },
+        }
       ).fail(function (data) {
         if (data.status === 403) {
           window.location = base_url + "/login";
@@ -75,7 +75,7 @@
               window.location = base_url + "/";
               break;
           }
-        },
+        }
       ).fail(function (data) {
         if (data.status === 403) {
           window.location = base_url + "/login";
@@ -104,9 +104,9 @@
           {
             category: $(this).val().trim().toLowerCase().replace(/\s+/g, "-"),
           },
-          function (data) {
+          function (_data) {
             location.reload();
-          },
+          }
         ).fail(function (data) {
           if (data.status === 403) {
             window.location = base_url + "/login";
@@ -163,14 +163,14 @@
                   });
                   break;
               }
-            },
+            }
           ).fail(function (data) {
             if (data.status === 403) {
               window.location = base_url + "/login";
             }
           });
         });
-      },
+      }
     );
   });
 })(jQuery, hljs);

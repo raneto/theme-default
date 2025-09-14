@@ -2,6 +2,7 @@
   "name": "@raneto/theme-default",
   "version": "0.6.0",
   "description": "Raneto's Default Theme",
+  "type": "module",
   "authors": [
     "Ryan Lelek <ryanlelek@gmail.com>",
     "Gilbert Pellegrom <gilbert@pellegrom.me>"
@@ -29,7 +30,8 @@
     "build": "npm run gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "gulp default",
-    "lint": "eslint gulpfile.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write ."
   },
@@ -38,14 +40,18 @@
     "npm": ">=10.9.3"
   },
   "devDependencies": {
+    "@eslint/js": "9.35.0",
     "@fixhq/sweetalert2": "11.10.8",
     "bootstrap": "5.3.8",
-    "eslint": "8.57.1",
-    "eslint-config-standard": "17.1.0",
+    "eslint": "9.35.0",
+    "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "6.6.0",
+    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-promise": "7.2.1",
+    "eslint-plugin-unused-imports": "4.2.0",
     "fitvids": "2.1.1",
+    "globals": "16.4.0",
     "gulp": "5.0.1",
     "gulp-clean-css": "4.3.0",
     "gulp-uglify": "3.0.2",
