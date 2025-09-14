@@ -9,8 +9,7 @@ gulp.task("vendor", function () {
   const source = [
     "./node_modules/jquery/dist/**/*.min.js",
     "./node_modules/bootstrap/dist/css/**/*.min.css*",
-    "./node_modules/bootstrap/dist/js/**/bootstrap.min.js*",
-    "./node_modules/@popperjs/core/dist/umd/**/*.min.js",
+    "./node_modules/bootstrap/dist/js/**/bootstrap*.min.js*",
     "./node_modules/highlight.js/styles/**/*.min.css",
     "./node_modules/@fixhq/sweetalert2/dist/**/*.min.*",
     "./node_modules/marked/**/*.js",
