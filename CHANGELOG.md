@@ -1,6 +1,6 @@
 # Changelog
 
-## UNRELEASED / v0.8.1
+## 2025.09.14 / v0.8.1
 
 - **[Edit]** Correcting `sweetalert2` includes
 - **[Deps]** Replace `ghostdown` with `marked` and `codemirror` v5.x
