@@ -28,7 +28,7 @@ gulp.task("vendor", function () {
 gulp.task("html-templates", function () {
   return (
     gulp
-      .src("./src/templates/*.html")
+      .src("./src/templates/**/*.html")
       // Cannot use due to Mustache/Hogan
       // .pipe(minify_html({
       //   collapseWhitespace: true,
