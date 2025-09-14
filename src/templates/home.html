@@ -29,9 +29,9 @@
       <h2 class="card-heading">{{lang.global.mainArticles}}</h2>
       <ul class="list-group pages">
         {{#files}}
-        <li class="list-group-item page">
-          <a href="{{config.base_url}}/{{slug}}">{{title}}</a>
-        </li>
+        <a href="{{config.base_url}}/{{slug}}" class="list-group-item page">
+          {{title}}
+        </a>
         {{/files}}
       </ul>
     </div>
@@ -42,20 +42,28 @@
       <h2 class="card-heading">{{title}}</h2>
       <ul class="list-group pages">
         {{#files}} {{^is_directory}}
-        <li class="list-group-item page">
-          <a href="{{config.base_url}}/{{slug}}">{{title}}</a>
-        </li>
+        <a href="{{config.base_url}}/{{slug}}" class="list-group-item page">
+          {{title}}
+        </a>
         {{/is_directory}} {{#is_directory}}
         <li class="list-group-item page">
           {{title}} {{#files}}
           <ul>
             {{^is_directory}}
-            <li><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+            <li>
+              <a href="{{config.base_url}}/{{slug}}" class="sub-page-link"
+                >{{title}}</a
+              >
+            </li>
             {{/is_directory}} {{#is_directory}}
             <li>{{title}}</li>
             <ul>
               {{#files}}
-              <li><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              <li>
+                <a href="{{config.base_url}}/{{slug}}" class="sub-page-link"
+                  >{{title}}</a
+                >
+              </li>
               {{/files}}
             </ul>
             {{/is_directory}}

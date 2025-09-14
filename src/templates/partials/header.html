@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{config.locale}}"{{#config.rtl_layout}} dir="rtl"{{/config.rtl_layout}}>
+<html lang="{{config.locale}}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +20,12 @@
   <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.rtl.min.css">
   {{/config.rtl_layout}}
   <link rel="stylesheet" href="{{config.base_url}}/lib/highlight.js/styles/a11y-light.min.css">
-  <script>var rn_base_url = "{{config.base_url}}";</script>
+  <script src="{{config.base_url}}/scripts/init.js" data-base-url="{{config.base_url}}" data-rtl="{{config.rtl_layout}}"></script>
   <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
   <link rel="stylesheet" href="{{config.base_url}}/styles/ghostdown.css">
+  <link rel="stylesheet" href="{{config.base_url}}/styles/page.css">
+  <link rel="stylesheet" href="{{config.base_url}}/styles/search.css">
+  <link rel="stylesheet" href="{{config.base_url}}/styles/edit.css">
 
   {{{config.analytics}}}
 
@@ -55,8 +58,8 @@
                     {{username}}
                     <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
-                    <li class="dropdown-item"><a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a></li>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropDown">
+                    <li><a class="dropdown-item" href="{{config.base_url}}/logout">{{lang.login.logout}}</a></li>
                   </ul>
                 </div>
               {{/loggedIn}}

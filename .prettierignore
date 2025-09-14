@@ -1,4 +1,3 @@
 dist
-src/templates/layout.html
-src/templates/login.html
-src/templates/page.html
+src/templates/partials/header.html
+src/templates/partials/footer.html

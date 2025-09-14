@@ -1,0 +1,12 @@
+/* Page Template Styles */
+
+.add-page {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.add-page span {
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}

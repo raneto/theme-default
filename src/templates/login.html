@@ -1,86 +1,171 @@
-<!DOCTYPE html>
-<html lang="{{config.locale}}"{{#config.rtl_layout}} dir="rtl"{{/config.rtl_layout}}>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{#meta.title}}{{meta.title}} - {{/meta.title}}{{config.site_title}}</title>
-    {{#meta.description}}
-    <meta name="description" content="{{meta.description}}">{{/meta.description}}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{config.base_url}}/favicon.ico">
-    <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon.ico">
-    <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="apple-touch-icon" href="{{config.base_url}}/v0.5.0/icons/apple-touch-icon.png" sizes="180x180">
+<!doctype html>
+<html lang="{{config.locale}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{lang.login.login}} - {{config.site_title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="{{config.base_url}}/favicon.ico" />
+    <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon.ico" />
+    <link
+      rel="icon"
+      href="{{config.base_url}}/v0.5.0/icons/favicon-32x32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="{{config.base_url}}/v0.5.0/icons/favicon-16x16.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{{config.base_url}}/v0.5.0/icons/apple-touch-icon.png"
+      sizes="180x180"
+    />
     {{^config.rtl_layout}}
-    <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.min.css"
+    />
+    {{/config.rtl_layout}} {{#config.rtl_layout}}
+    <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.rtl.css" />
+    <link
+      rel="stylesheet"
+      href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    />
     {{/config.rtl_layout}}
-    {{#config.rtl_layout}}
-    <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.rtl.css">
-    <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.rtl.min.css">
-    {{/config.rtl_layout}}
-    <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
-    <link rel="stylesheet" href="{{config.base_url}}/styles/login-form.css">
-    <link rel="stylesheet" href="{{config.base_url}}/styles/login-style.css">
-    <link rel="stylesheet" href="{{config.base_url}}/styles/zocial.css">
+    <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css" />
+    <link rel="stylesheet" href="{{config.base_url}}/styles/login.css" />
     {{{config.analytics}}}
-</head>
+  </head>
 
-<body class="{{body_class}}">
-    <!-- Main -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-4 offset-4 form-box">
-                <div class="form-top">
-                    <div class="form-top-left">
-                        <h1>Raneto</h1>
-                    </div>
-                    <div class="form-top-right">
-                        <img src="{{config.base_url}}/favicon.ico"></i>
-                    </div>
-                </div>
-
-                <div class="form-bottom">
-                    {{#googleoauth}}
-                      <a href="/auth/login" class="zocial google">Sign in with Google</a>
-                    {{/googleoauth}}
-
-                    {{^googleoauth}}
-                      <form role="form" action="" method="post" class="login-form">
-                        <div>
-                          <label class="form-label visually-hidden" for="form-username">{{lang.login.username}}</label>
-                            <input tabindex="1" type="text" name="username" placeholder="{{lang.login.username}}" class="form-username form-control" id="form-username">
-                          </div>
-                          <div>
-                            <label class="form-label visually-hidden" for="form-password">{{lang.login.password}}</label>
-                            <input tabindex="2" type="password" name="password" placeholder="{{lang.login.password}}" class="form-password form-control" id="form-password">
-                          </div>
-                          <button type="submit" class="btn">{{lang.login.login}}</button>
-                      </form>
-                    {{/googleoauth}}
-                </div>
-            </div>
+  <body class="page-login">
+    <div class="login-container">
+      <div class="login-box">
+        <div class="login-header">
+          <h1 class="login-title">{{config.site_title}}</h1>
+          <p class="login-subtitle">{{lang.login.login}}</p>
         </div>
+
+        {{#googleoauth}}
+        <a href="/auth/login" class="google-signin">
+          <svg width="20" height="20" viewBox="0 0 48 48">
+            <path
+              fill="#EA4335"
+              d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+            />
+            <path
+              fill="#4285F4"
+              d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+            />
+            <path
+              fill="#FBBC05"
+              d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+            />
+            <path
+              fill="#34A853"
+              d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+            />
+          </svg>
+          Sign in with Google
+        </a>
+
+        <div class="divider">
+          <span>or</span>
+        </div>
+        {{/googleoauth}} {{^googleoauth}}
+        <form role="form" action="" method="post" class="login-form">
+          <div class="form-group">
+            <label class="form-label" for="form-username"
+              >{{lang.login.username}}</label
+            >
+            <input
+              tabindex="1"
+              type="text"
+              name="username"
+              class="form-control"
+              id="form-username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="form-password"
+              >{{lang.login.password}}</label
+            >
+            <input
+              tabindex="2"
+              type="password"
+              name="password"
+              class="form-control"
+              id="form-password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-login">
+            {{lang.login.login}}
+          </button>
+        </form>
+        {{/googleoauth}} {{#googleoauth}}
+        <form role="form" action="" method="post" class="login-form">
+          <div class="form-group">
+            <label class="form-label" for="form-username"
+              >{{lang.login.username}}</label
+            >
+            <input
+              tabindex="1"
+              type="text"
+              name="username"
+              class="form-control"
+              id="form-username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="form-password"
+              >{{lang.login.password}}</label
+            >
+            <input
+              tabindex="2"
+              type="password"
+              name="password"
+              class="form-control"
+              id="form-password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-login">
+            {{lang.login.login}}
+          </button>
+        </form>
+        {{/googleoauth}}
+      </div>
     </div>
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container-fluid">
-            {{#config.copyright}}
-            <p class="copyright float-end">{{{config.copyright}}}</p>
-            {{/config.copyright}}
-        </div>
+
+    <footer class="login-footer">
+      {{#config.copyright}}
+      <p class="mb-0">{{{config.copyright}}}</p>
+      {{/config.copyright}}
+      <p class="mb-0">
+        <small
+          >Powered by
+          <a href="https://raneto.com" target="_blank" rel="noopener"
+            >Raneto</a
+          ></small
+        >
+      </p>
     </footer>
+
     <!-- JavaScript -->
-    <script>var rn_base_url = "{{config.base_url}}";</script>
+    <script
+      src="{{config.base_url}}/scripts/init.js"
+      data-base-url="{{config.base_url}}"
+      data-rtl="{{config.rtl_layout}}"
+    ></script>
     <script src="{{config.base_url}}/lib/jquery/dist/jquery.min.js"></script>
     <script src="{{config.base_url}}/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="{{config.base_url}}/lib/jquery-backstretch/jquery.backstretch.min.js"></script>
     <script src="{{config.base_url}}/lib/@fixhq/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="{{config.base_url}}/scripts/login.js"></script>
-    <script>
-    $(document).ready(function() {
-        $.backstretch("{{config.base_url}}/v0.5.0/images/background.jpg");
-    });
-    </script>
-</body>
+  </body>
 </html>

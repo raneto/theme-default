@@ -3,6 +3,12 @@ jQuery(document).ready(function () {
 
   var base_url = typeof rn_base_url === "undefined" ? "" : rn_base_url;
 
+  // Focus on username field on load
+  var usernameField = document.getElementById("form-username");
+  if (usernameField) {
+    usernameField.focus();
+  }
+
   // Form validation
   $(
     '.login-form input[type="text"], .login-form input[type="password"], .login-form textarea'

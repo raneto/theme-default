@@ -60,14 +60,25 @@
 
     // Modal: Delete Page Confirm
     $("#delete-page-confirm").click(function () {
-      var file_arr = window.location.pathname.split("/");
-      var base_arr = base_url.split("/");
-      file_arr.splice(0, base_arr.length, "");
+      var pathname = window.location.pathname;
+      var base_path = base_url.replace(window.location.origin, "");
+
+      // Remove the base_path from the beginning of pathname if it exists
+      var file_path = pathname;
+      if (base_path && pathname.indexOf(base_path) === 0) {
+        file_path = pathname.substring(base_path.length);
+      }
+
+      // Remove leading slash if present
+      if (file_path.charAt(0) === "/") {
+        file_path = file_path.substring(1);
+      }
+
       $("#deleteModal").modal("hide");
       $.post(
         base_url + "/rn-delete",
         {
-          file: decodeURI(file_arr.join("/")),
+          file: decodeURI(file_path),
         },
         function (data) {
           switch (data.status) {
@@ -95,6 +106,28 @@
         .replace(/\s+/g, "-");
       current_category = text !== "main-articles" ? text : "";
     });
+
+    // Make categories clickable to expand/collapse
+    // Use setTimeout to ensure init.js has created the collapse links
+    setTimeout(function () {
+      $("li.category").on("click", function (e) {
+        // Don't trigger if clicking on a link, button, or input
+        if (
+          $(e.target).is("a, button, input, .add-page") ||
+          $(e.target).closest("a, button, .add-page").length
+        ) {
+          return;
+        }
+
+        // Find the collapse toggle link in this category
+        var collapseLink = $(this).find(
+          ".category-title-text a[data-bs-toggle='collapse']"
+        );
+        if (collapseLink.length) {
+          collapseLink[0].click();
+        }
+      });
+    }, 100);
 
     // New Category
     $("#newCategory").keypress(function (e) {
@@ -130,15 +163,30 @@
       function (lang) {
         // Save Page
         $(".save-page").click(function () {
-          var file_arr = window.location.pathname.split("/");
-          var base_arr = base_url.split("/");
-          file_arr.splice(0, base_arr.length, "");
-          file_arr.pop();
+          // Get the current pathname and remove the base URL if present
+          var pathname = window.location.pathname;
+          var base_path = base_url.replace(window.location.origin, "");
+
+          // Remove base path from pathname if it exists
+          if (base_path && pathname.indexOf(base_path) === 0) {
+            pathname = pathname.substring(base_path.length);
+          }
+
+          // Remove leading slash if present
+          if (pathname.charAt(0) === "/") {
+            pathname = pathname.substring(1);
+          }
+
+          // Remove trailing /edit
+          if (pathname.endsWith("/edit")) {
+            pathname = pathname.substring(0, pathname.length - 5);
+          }
+
           $("#entry-markdown").next(".CodeMirror")[0].CodeMirror.save();
           $.post(
             base_url + "/rn-edit",
             {
-              file: decodeURI(file_arr.join("/")),
+              file: decodeURI(pathname),
               content: $("#entry-markdown").val(),
               meta_title: $("#entry-metainfo-title").val(),
               meta_description: $("#entry-metainfo-description").val(),
