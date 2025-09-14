@@ -16,14 +16,6 @@
       $(".content table").addClass("table");
     }
 
-    // Deal with Home Categories
-    if ($(".home-categories").length) {
-      $(".home-categories").masonry({
-        columnWidth: ".col",
-        itemSelector: ".col",
-        transitionDuration: 0,
-      });
-    }
 
     // Modal: Add Page Confirm
     $("#add-page-confirm").click(function () {
