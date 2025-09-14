@@ -1,5 +1,10 @@
 # Changelog
 
+## 2025.09.13 / v0.7.0
+
+- **[Edit]** Upgrade ESLint to v9.x
+- **[Misc]** Upgrade packages
+
 ## 2025.01.02 / v0.6.0
 
 - **[Misc]** Upgrade packages
