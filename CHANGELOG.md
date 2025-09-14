@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025.09.13 / v0.8.0
+
+- **[Edit]** Updated Design (for testing)
+
 ## 2025.09.13 / v0.7.0
 
 - **[Edit]** Upgrade ESLint to v9.x
