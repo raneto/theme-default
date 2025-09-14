@@ -13,6 +13,12 @@ gulp.task("vendor", function () {
     "./node_modules/@popperjs/core/dist/umd/**/*.min.js",
     "./node_modules/highlight.js/styles/**/*.min.css",
     "./node_modules/@fixhq/sweetalert2/dist/**/*.min.*",
+    "./node_modules/marked/**/*.js",
+    "./node_modules/codemirror/lib/**/*.js",
+    "./node_modules/codemirror/lib/**/*.css",
+    "./node_modules/codemirror/mode/markdown/**/*.js",
+    "./node_modules/codemirror/addon/edit/**/*.js",
+    "./node_modules/codemirror/theme/**/*.css",
   ];
 
   //const dest = 'themes/default/public/lib';

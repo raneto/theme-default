@@ -23,7 +23,6 @@
 
 #accordion .card-title {
   margin: 0;
-  font-size: 1.1rem;
 }
 
 #accordion .card-title a {
@@ -44,7 +43,6 @@
   right: 0;
   top: 0;
   transition: transform 0.3s ease;
-  font-size: 0.875rem;
 }
 
 #accordion .card-title a.collapsed::after {
@@ -91,7 +89,6 @@
 .CodeMirror {
   border: 2px solid #e2e8f0;
   background: #f8f9fa;
-  font-size: 1.5rem;
   min-height: 500px;
 }
 
@@ -111,6 +108,3 @@
 }
 
 /* Preview Content */
-.entry-preview-content {
-  font-size: 1.5rem;
-}

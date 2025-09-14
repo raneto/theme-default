@@ -43,6 +43,7 @@
     "@eslint/js": "9.35.0",
     "@fixhq/sweetalert2": "11.10.8",
     "bootstrap": "5.3.8",
+    "codemirror": "5.65.20",
     "eslint": "9.35.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
@@ -56,6 +57,7 @@
     "gulp-uglify": "3.0.2",
     "highlight.js": "11.11.1",
     "jquery": "3.7.1",
+    "marked": "16.2.1",
     "prettier": "3.6.2"
   }
 }

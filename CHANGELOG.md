@@ -3,6 +3,7 @@
 ## UNRELEASED / v0.8.1
 
 - **[Edit]** Correcting `sweetalert2` includes
+- **[Deps]** Replace `ghostdown` with `marked` and `codemirror` v5.x
 - **[Deps]** Remove `fitvids.js` replacing with CSS
 - **[Deps]** Remove `masonry-layout` replacing with CSS
 - **[Deps]** Remove `jquery.backstretch` as it is unused

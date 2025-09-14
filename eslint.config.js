@@ -6,11 +6,7 @@ export default [
   js.configs.recommended,
   eslintConfigPrettier,
   {
-    ignores: [
-      "dist/**",
-      "node_modules/**",
-      "src/scripts/ghostdown.js", // Third-party CodeMirror library
-    ],
+    ignores: ["dist/**", "node_modules/**"],
   },
   {
     languageOptions: {
@@ -36,7 +32,7 @@ export default [
         // Project-specific globals
         rn_base_url: "readonly",
         // Third-party library globals
-        Showdown: "readonly",
+        marked: "readonly",
         CodeMirror: "readonly",
         Swal: "readonly",
         hljs: "readonly",

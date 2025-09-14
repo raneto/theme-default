@@ -16,7 +16,6 @@
       $(".content table").addClass("table");
     }
 
-
     // Modal: Add Page Confirm
     $("#add-page-confirm").click(function () {
       $("#addModal").modal("hide");
@@ -171,12 +170,17 @@
             pathname = pathname.substring(0, pathname.length - 5);
           }
 
-          $("#entry-markdown").next(".CodeMirror")[0].CodeMirror.save();
+          // Save CodeMirror content back to textarea
+          var $textarea = $("#entry-markdown");
+          if ($textarea.next(".CodeMirror").length) {
+            $textarea.next(".CodeMirror")[0].CodeMirror.save();
+          }
+
           $.post(
             base_url + "/rn-edit",
             {
               file: decodeURI(pathname),
-              content: $("#entry-markdown").val(),
+              content: $textarea.val(),
               meta_title: $("#entry-metainfo-title").val(),
               meta_description: $("#entry-metainfo-description").val(),
               meta_sort: $("#entry-metainfo-sort").val(),
