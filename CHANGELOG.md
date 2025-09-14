@@ -6,6 +6,7 @@
 - **[Deps]** Remove `fitvids.js` replacing with CSS
 - **[Deps]** Remove `masonry-layout` replacing with CSS
 - **[Deps]** Remove `jquery.backstretch` as it is unused
+- **[Deps]** Upgrade `highlight.js` from v11.9.0 to v11.11.1 (footer CDN link)
 
 ## 2025.09.13 / v0.8.0
 
