@@ -37,6 +37,10 @@
     />
     {{/config.rtl_layout}}
     <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css" />
+    <link
+      rel="stylesheet"
+      href="{{config.base_url}}/lib/@fixhq/sweetalert2/dist/sweetalert2.min.css"
+    />
     <link rel="stylesheet" href="{{config.base_url}}/styles/login.css" />
     {{{config.analytics}}}
   </head>
@@ -164,8 +168,8 @@
       data-rtl="{{config.rtl_layout}}"
     ></script>
     <script src="{{config.base_url}}/lib/jquery/dist/jquery.min.js"></script>
-    <script src="{{config.base_url}}/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="{{config.base_url}}/lib/@fixhq/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="{{config.base_url}}/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{config.base_url}}/lib/@fixhq/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="{{config.base_url}}/scripts/login.js"></script>
   </body>
 </html>
