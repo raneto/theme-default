@@ -20,6 +20,12 @@
     document.documentElement.setAttribute("dir", "rtl");
   }
 
+  // Prevent FOUC on login page by adding styles-loaded class
+  if (document.body && document.body.classList.contains("page-login")) {
+    // Add class immediately to show content
+    document.body.classList.add("styles-loaded");
+  }
+
   // Handle collapsible menus after DOM is loaded
   document.addEventListener("DOMContentLoaded", function () {
     // Handle category titles

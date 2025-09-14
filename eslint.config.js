@@ -39,7 +39,6 @@ export default [
         Showdown: "readonly",
         CodeMirror: "readonly",
         Swal: "readonly",
-        fitvids: "readonly",
         hljs: "readonly",
       },
     },

@@ -1,5 +1,11 @@
 # Changelog
 
+## UNRELEASED / v0.8.1
+
+- **[Edit]** Correcting `sweetalert2` includes
+- **[Deps]** Remove `fitvids.js` replacing with CSS
+- **[Deps]** Remove `jquery.backstretch` as it is unused
+
 ## 2025.09.13 / v0.8.0
 
 - **[Edit]** Updated Design (for testing)

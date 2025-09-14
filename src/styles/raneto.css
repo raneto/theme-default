@@ -358,6 +358,21 @@ a:hover {
   margin: 2rem auto;
 }
 
+/* Responsive video embeds */
+.content iframe,
+.content embed,
+.content object,
+.content video {
+  max-width: 100%;
+  height: auto;
+}
+.content iframe[src*="youtube"],
+.content iframe[src*="vimeo"] {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
 .content code {
   padding: 0.25rem 0.5rem;
   background: var(--primary-lighter);

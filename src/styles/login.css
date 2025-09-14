@@ -1,5 +1,10 @@
 /* Login Page Styles */
 
+/* Prevent FOUC - hide body until styles are loaded */
+body.page-login:not(.styles-loaded) {
+  visibility: hidden;
+}
+
 body.page-login {
   min-height: 100vh;
   display: flex;
