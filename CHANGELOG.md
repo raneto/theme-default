@@ -1,6 +1,6 @@
 # Changelog
 
-## UNRELEASED / v0.8.2
+## 2025.09.15 / v0.8.2
 
 - **[Edit]** Better RTL support
 
