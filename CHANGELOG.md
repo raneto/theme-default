@@ -1,5 +1,9 @@
 # Changelog
 
+## UNRELEASED / v0.8.2
+
+- **[Edit]** Better RTL support
+
 ## 2025.09.14 / v0.8.1
 
 - **[Edit]** Correcting `sweetalert2` includes

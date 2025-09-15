@@ -39,9 +39,6 @@
 
 #accordion .card-title a::after {
   content: "▼";
-  position: absolute;
-  right: 0;
-  top: 0;
   transition: transform 0.3s ease;
 }
 

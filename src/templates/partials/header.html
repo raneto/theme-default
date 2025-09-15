@@ -23,7 +23,6 @@
   <script src="{{config.base_url}}/scripts/init.js" data-base-url="{{config.base_url}}" data-rtl="{{config.rtl_layout}}"></script>
   <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
   <link rel="stylesheet" href="{{config.base_url}}/lib/codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="{{config.base_url}}/styles/page.css">
   <link rel="stylesheet" href="{{config.base_url}}/styles/search.css">
   <link rel="stylesheet" href="{{config.base_url}}/styles/edit.css">
 
@@ -43,9 +42,9 @@
           {{#config.googleoauth}}
           <form class="float-end">
             {{#config.authentication}} {{#loggedIn}} &nbsp;
-            <span>{{profile.displayName}}</span> &nbsp;
-            <a href="{{config.base_url}}/auth/logout" class="btn btn-info">{{lang.login.logout}}</a> {{/loggedIn}} {{^loggedIn}} &nbsp;
-            <a href="{{config.base_url}}/auth/login" class="btn btn-info">{{lang.login.login}}</a> {{/loggedIn}} {{/config.authentication}}
+            <span id="login-username">{{profile.displayName}}</span> &nbsp;
+            <a id="btnLogout" href="{{config.base_url}}/auth/logout" class="btn btn-info">{{lang.login.logout}}</a> {{/loggedIn}} {{^loggedIn}} &nbsp;
+            <a id="btnLogin" href="{{config.base_url}}/auth/login" class="btn btn-info">{{lang.login.login}}</a> {{/loggedIn}} {{/config.authentication}}
           </form>
           {{/config.googleoauth}}
 
@@ -54,17 +53,17 @@
             {{#config.authentication}}
               {{#loggedIn}}
                 <div class="dropdown">
-                  <button class="btn btn-info dropdown-toggle" type="button" id="userDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <button id="btnUsername" class="btn btn-info dropdown-toggle" type="button" id="userDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     {{username}}
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropDown">
-                    <li><a class="dropdown-item" href="{{config.base_url}}/logout">{{lang.login.logout}}</a></li>
+                    <li><a id="btnLogout" class="dropdown-item" href="{{config.base_url}}/logout">{{lang.login.logout}}</a></li>
                   </ul>
                 </div>
               {{/loggedIn}}
               {{^loggedIn}}
-                &nbsp;<a href="{{config.base_url}}/login" class="btn btn-info">{{lang.login.login}}</a>
+                &nbsp;<a id="btnLogin" href="{{config.base_url}}/login" class="btn btn-info">{{lang.login.login}}</a>
               {{/loggedIn}}
             {{/config.authentication}}
           </form>

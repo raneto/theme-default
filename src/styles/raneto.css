@@ -224,6 +224,10 @@ a:hover {
   border-right: none;
 }
 
+#login-username {
+  color: var(--light-color);
+}
+
 #home-search {
   border-radius: 0.375rem 0 0 0.375rem;
 }
@@ -807,4 +811,16 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
+}
+
+/* Page Template Styles */
+
+.add-page {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.add-page span {
+  font-weight: bold;
+  cursor: pointer;
 }
