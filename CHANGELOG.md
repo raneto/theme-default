@@ -1,9 +1,10 @@
 # Changelog
 
-## UNRELEASED / v0.8.3
+## 2026.02.15 / v0.8.3
 
 - **[Deps]** Upgrading jQuery from v3.7.1 to v4.0.0
 - **[Deps]** Upgrading marked from v16.3.0 to v17.0.2
+- **[Deps]** Upgrading other dependencies (except eslint and codemirror major)
 
 ## 2025.09.15 / v0.8.2
 
