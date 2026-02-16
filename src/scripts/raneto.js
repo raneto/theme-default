@@ -172,8 +172,9 @@
 
           // Save CodeMirror content back to textarea
           var $textarea = $("#entry-markdown");
-          if ($textarea.next(".CodeMirror").length) {
-            $textarea.next(".CodeMirror")[0].CodeMirror.save();
+          var cmView = $textarea.data("cmView");
+          if (cmView) {
+            $textarea.val(cmView.state.doc.toString());
           }
 
           $.post(

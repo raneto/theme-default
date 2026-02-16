@@ -33,7 +33,6 @@ export default [
         rn_base_url: "readonly",
         // Third-party library globals
         marked: "readonly",
-        CodeMirror: "readonly",
         Swal: "readonly",
         hljs: "readonly",
       },

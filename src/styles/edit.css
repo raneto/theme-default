@@ -83,23 +83,23 @@
 }
 
 /* CodeMirror Editor Styles */
-.CodeMirror {
+.cm-editor {
   border: 2px solid #e2e8f0;
   background: #f8f9fa;
   min-height: 500px;
 }
 
-.CodeMirror-focused {
+.cm-editor.cm-focused {
   border-color: #2c7a7b;
   box-shadow: 0 0 0 0.25rem rgba(44, 122, 123, 0.25);
 }
 
-.cm-s-default .CodeMirror-gutters {
+.cm-gutters {
   background: #f1f3f5;
   border-right: 1px solid #dee2e6;
 }
 
-.cm-s-default .CodeMirror-linenumber {
+.cm-lineNumbers .cm-gutterElement {
   color: #868e96;
   padding: 0 8px;
 }

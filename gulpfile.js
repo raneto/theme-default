@@ -2,6 +2,7 @@
 import gulp from "gulp";
 import minify_js from "gulp-uglify";
 import minify_css from "gulp-clean-css";
+import { execSync } from "child_process";
 //import minify_html from 'gulp-htmlmin';
 
 // Vendor Files - Includes CSS, JS, and Images
@@ -13,11 +14,6 @@ gulp.task("vendor", function () {
     "./node_modules/highlight.js/styles/**/*.min.css",
     "./node_modules/@fixhq/sweetalert2/dist/**/*.min.*",
     "./node_modules/marked/**/*.js",
-    "./node_modules/codemirror/lib/**/*.js",
-    "./node_modules/codemirror/lib/**/*.css",
-    "./node_modules/codemirror/mode/markdown/**/*.js",
-    "./node_modules/codemirror/addon/edit/**/*.js",
-    "./node_modules/codemirror/theme/**/*.css",
   ];
 
   //const dest = 'themes/default/public/lib';
@@ -48,12 +44,21 @@ gulp.task("css", function () {
     .pipe(gulp.dest("./dist/public/styles"));
 });
 
-// JS
+// JS (excludes editor.js which is bundled by esbuild)
 gulp.task("js", function () {
   return gulp
-    .src(["./src/scripts/*.js"])
+    .src(["./src/scripts/*.js", "!./src/scripts/editor.js"])
     .pipe(minify_js())
     .pipe(gulp.dest("./dist/public/scripts"));
+});
+
+// Bundle editor.js with CodeMirror 6 dependencies
+gulp.task("esbuild", function (done) {
+  execSync(
+    "npx esbuild src/scripts/editor.js --bundle --minify --format=iife --outfile=dist/public/scripts/editor.js",
+    { stdio: "inherit" }
+  );
+  done();
 });
 
 // Static Files
@@ -76,6 +81,7 @@ gulp.task(
     "html-templates",
     "css",
     "js",
+    "esbuild",
     "static",
     "zocial-temp",
   ])
