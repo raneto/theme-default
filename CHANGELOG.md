@@ -1,5 +1,9 @@
 # Changelog
 
+## UNRELEASED / v0.8.3
+
+- **[Deps]** Upgrading jQuery from v3.7.1 to v4.0.0
+
 ## 2025.09.15 / v0.8.2
 
 - **[Edit]** Better RTL support
