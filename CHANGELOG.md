@@ -3,6 +3,7 @@
 ## UNRELEASED / v0.9.0
 
 - **[Deps]** Upgrading CodeMirror from v5.65.21 to v6.0.2
+- **[Deps]** Packaging Highlight.js locally
 
 ## 2026.02.15 / v0.8.3
 

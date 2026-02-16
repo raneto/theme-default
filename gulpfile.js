@@ -3,7 +3,35 @@ import gulp from "gulp";
 import minify_js from "gulp-uglify";
 import minify_css from "gulp-clean-css";
 import { execSync } from "child_process";
+import { readFileSync } from "fs";
+import { Transform } from "stream";
 //import minify_html from 'gulp-htmlmin';
+
+// Read the installed version of an npm package
+function getPackageVersion(name) {
+  const pkg = JSON.parse(
+    readFileSync(`./node_modules/${name}/package.json`, "utf8")
+  );
+  return pkg.version;
+}
+
+// Stream transform that replaces __PKG_VERSION:<name>__ placeholders
+function replaceVersions() {
+  return new Transform({
+    objectMode: true,
+    transform(file, _encoding, callback) {
+      if (file.isBuffer()) {
+        let contents = file.contents.toString();
+        contents = contents.replace(
+          /__PKG_VERSION:([^_]+)__/g,
+          (_match, name) => getPackageVersion(name)
+        );
+        file.contents = Buffer.from(contents);
+      }
+      callback(null, file);
+    },
+  });
+}
 
 // Vendor Files - Includes CSS, JS, and Images
 gulp.task("vendor", function () {
@@ -32,6 +60,7 @@ gulp.task("html-templates", function () {
       //   collapseWhitespace: true,
       //   removeComments: true
       // }))
+      .pipe(replaceVersions())
       .pipe(gulp.dest("./dist/templates"))
   );
 });
@@ -61,6 +90,16 @@ gulp.task("esbuild", function (done) {
   done();
 });
 
+// Bundle highlight.js into a versioned directory
+gulp.task("esbuild-hljs", function (done) {
+  const version = getPackageVersion("highlight.js");
+  execSync(
+    `npx esbuild node_modules/highlight.js/lib/common.js --bundle --minify --format=iife --global-name=hljs --outfile=dist/public/lib/highlight.js/${version}/highlight.min.js`,
+    { stdio: "inherit" }
+  );
+  done();
+});
+
 // Static Files
 gulp.task("static", function () {
   return gulp
@@ -82,6 +121,7 @@ gulp.task(
     "css",
     "js",
     "esbuild",
+    "esbuild-hljs",
     "static",
     "zocial-temp",
   ])
