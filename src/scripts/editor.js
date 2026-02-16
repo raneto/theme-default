@@ -5,11 +5,6 @@
   marked.setOptions({
     breaks: true,
     gfm: true,
-    headerIds: false,
-    mangle: false,
-    sanitize: false,
-    smartLists: true,
-    smartypants: false,
   });
 
   // Initialize the markdown editor
