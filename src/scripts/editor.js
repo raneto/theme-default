@@ -6,65 +6,70 @@ import { markdown, markdownKeymap } from "@codemirror/lang-markdown";
 
 var $ = window.jQuery;
 var marked = window.marked;
+var DOMPurify = window.DOMPurify;
 
-// Configure marked options for better markdown rendering
-marked.setOptions({
+// Configure marked for markdown rendering
+marked.use({
   breaks: true,
   gfm: true,
-  headerIds: false,
-  mangle: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: false,
 });
 
 $(document).ready(function () {
   var $textarea = $("#entry-markdown");
   if (!$textarea.length) return;
 
+  // Cache selectors used in high-frequency event handlers
+  var $preview = $(".rendered-markdown");
+  var $wordCount = $(".entry-word-count");
+
   // Update preview function
   function updatePreview(doc) {
-    var preview = $(".rendered-markdown");
     var text = doc.toString();
     try {
-      var html = marked.parse(text);
-      preview.html(html);
+      var html = DOMPurify.sanitize(marked.parse(text));
+      $preview.html(html);
     } catch (e) {
-      preview.html(
-        '<div class="alert alert-danger">Error parsing markdown: ' +
-          e.message +
-          "</div>"
-      );
+      $preview
+        .empty()
+        .append(
+          $('<div class="alert alert-danger"></div>').text(
+            "Error parsing markdown: " + e.message
+          )
+        );
     }
     updateWordCount(text);
   }
 
   // Update word count
   function updateWordCount(text) {
-    var wordCount = $(".entry-word-count");
-    if (text && text.length) {
-      var words = text.match(/\S+/g);
-      wordCount.html((words ? words.length : 0) + " words");
-    } else {
-      wordCount.html("0 words");
-    }
+    var words = text.match(/\S+/g);
+    $wordCount.text((words ? words.length : 0) + " words");
+  }
+
+  // Build editor extensions
+  var extensions = [
+    basicSetup,
+    markdown(),
+    keymap.of([...markdownKeymap, indentWithTab]),
+    EditorView.lineWrapping,
+    EditorState.tabSize.of(2),
+    EditorView.updateListener.of(function (update) {
+      if (update.docChanged) {
+        updatePreview(update.state.doc);
+      }
+    }),
+  ];
+
+  // Pass CSP nonce so CodeMirror's injected <style> tags are allowed
+  var cspNonce = window.rn_csp_nonce;
+  if (cspNonce) {
+    extensions.push(EditorView.cspNonce.of(cspNonce));
   }
 
   // Create CodeMirror 6 editor
   var view = new EditorView({
     doc: $textarea.val(),
-    extensions: [
-      basicSetup,
-      markdown(),
-      keymap.of([...markdownKeymap, indentWithTab]),
-      EditorView.lineWrapping,
-      EditorState.tabSize.of(2),
-      EditorView.updateListener.of(function (update) {
-        if (update.docChanged) {
-          updatePreview(update.state.doc);
-        }
-      }),
-    ],
+    extensions: extensions,
     parent: $textarea[0].parentNode,
   });
 
@@ -74,37 +79,35 @@ $(document).ready(function () {
   // Store view instance for raneto.js save access
   $textarea.data("cmView", view);
 
+  // Cache scroll-related selectors
+  var $scroller = $(".cm-scroller");
+  var $previewContent = $(".entry-preview-content");
+  var $entryMarkdown = $(".entry-markdown");
+  var $entryPreview = $(".entry-preview");
+
   // Sync scroll between editor and preview
   function syncScroll() {
-    var $source = $(".cm-scroller");
-    var $target = $(".entry-preview-content");
+    if (!$scroller.length || !$previewContent.length) return;
 
-    var sourceHeight = $source[0].scrollHeight - $source.outerHeight();
-    var targetHeight = $target[0].scrollHeight - $target.outerHeight();
+    var sourceHeight = $scroller[0].scrollHeight - $scroller.outerHeight();
+    var targetHeight =
+      $previewContent[0].scrollHeight - $previewContent.outerHeight();
 
     if (sourceHeight > 0) {
       var ratio = targetHeight / sourceHeight;
-      var position = $source.scrollTop() * ratio;
-      $target.scrollTop(position);
+      var position = $scroller.scrollTop() * ratio;
+      $previewContent.scrollTop(position);
     }
   }
 
   // Scroll event handlers
-  $(document).on("scroll", ".cm-scroller", function (e) {
+  $scroller.on("scroll", function () {
     syncScroll();
-    if ($(e.target).scrollTop() > 10) {
-      $(".entry-markdown").addClass("scrolling");
-    } else {
-      $(".entry-markdown").removeClass("scrolling");
-    }
+    $entryMarkdown.toggleClass("scrolling", $(this).scrollTop() > 10);
   });
 
-  $(".entry-preview-content").on("scroll", function (e) {
-    if ($(e.target).scrollTop() > 10) {
-      $(".entry-preview").addClass("scrolling");
-    } else {
-      $(".entry-preview").removeClass("scrolling");
-    }
+  $previewContent.on("scroll", function (e) {
+    $entryPreview.toggleClass("scrolling", $(e.target).scrollTop() > 10);
   });
 
   // Initial preview update

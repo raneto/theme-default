@@ -1,5 +1,7 @@
 /* Search Template Styles */
 
 .search .page-title .category-label {
-  color: #444;
+  color: var(--body-color);
+  font-size: 0.875rem;
+  font-weight: 500;
 }

@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
   "use strict";
 
-  var base_url = typeof rn_base_url === "undefined" ? "" : rn_base_url;
+  var base_url = window.rn_base_url || "";
 
   // Focus on username field on load
   var usernameField = document.getElementById("form-username");
@@ -23,27 +23,33 @@ jQuery(document).ready(function () {
       .find('input[type="text"], input[type="password"], textarea')
       .each(function () {
         if ($(this).val() === "") {
-          e.preventDefault();
           $(this).addClass("input-error");
         } else {
           $(this).removeClass("input-error");
         }
       });
 
-    if ($(".input-error").length === 0) {
+    if ($(this).find(".input-error").length === 0) {
       $.post(base_url + "/rn-login", $(this).serialize(), function (data) {
         Swal.fire({
           icon: data.status ? "success" : "warning",
           title: data.message,
-          timer: data.status ? 2000 : null,
+          timer: data.status ? 1000 : null,
+          showConfirmButton: true,
+        }).then(function () {
+          if (data.status) {
+            window.location = base_url + "/";
+          }
+        });
+      }).fail(function (jqXHR) {
+        var msg = jqXHR.status
+          ? "Error: " + jqXHR.status + " " + jqXHR.statusText
+          : "Network error. Please check your connection.";
+        Swal.fire({
+          icon: "error",
+          title: msg,
           showConfirmButton: true,
         });
-
-        if (data.status) {
-          window.setTimeout(function () {
-            window.location = base_url + "/";
-          }, 1500);
-        }
       });
     }
   });

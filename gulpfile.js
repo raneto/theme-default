@@ -40,7 +40,9 @@ gulp.task("vendor", function () {
     "./node_modules/bootstrap/dist/css/**/*.min.css*",
     "./node_modules/bootstrap/dist/js/**/bootstrap*.min.js*",
     "./node_modules/highlight.js/styles/**/*.min.css",
-    "./node_modules/@fixhq/sweetalert2/dist/**/*.min.*",
+    "./node_modules/sweetalert2/dist/**/*.min.*",
+    "./node_modules/dompurify/dist/purify.min.js",
+    "./node_modules/dompurify/dist/purify.min.js.map",
     "./node_modules/marked/**/*.js",
   ];
 
@@ -69,7 +71,7 @@ gulp.task("html-templates", function () {
 gulp.task("css", function () {
   return gulp
     .src(["./src/styles/*.css"])
-    .pipe(minify_css({ compatibility: "ie9" }))
+    .pipe(minify_css())
     .pipe(gulp.dest("./dist/public/styles"));
 });
 
@@ -106,12 +108,6 @@ gulp.task("static", function () {
     .src("./src/static/**/*", { encoding: false, base: "./src/static" })
     .pipe(gulp.dest("./dist/public"));
 });
-gulp.task("zocial-temp", function () {
-  return gulp
-    .src("./src/styles/zocial.svg", { base: "./src" })
-    .pipe(gulp.dest("./dist/public"));
-});
-
 // Default
 gulp.task(
   "default",
@@ -123,6 +119,5 @@ gulp.task(
     "esbuild",
     "esbuild-hljs",
     "static",
-    "zocial-temp",
   ])
 );

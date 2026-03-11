@@ -14,16 +14,15 @@
     window.rn_base_url = window.location.origin;
   }
 
+  // Expose CSP nonce for libraries that inject inline styles (e.g. CodeMirror)
+  if (scriptElement && scriptElement.dataset.cspNonce) {
+    window.rn_csp_nonce = scriptElement.dataset.cspNonce;
+  }
+
   // Handle RTL layout
   // Apply RTL if the data-rtl attribute is "true"
   if (scriptElement && scriptElement.dataset.rtl === "true") {
     document.documentElement.setAttribute("dir", "rtl");
-  }
-
-  // Prevent FOUC on login page by adding styles-loaded class
-  if (document.body && document.body.classList.contains("page-login")) {
-    // Add class immediately to show content
-    document.body.classList.add("styles-loaded");
   }
 
   // Handle collapsible menus after DOM is loaded

@@ -2,10 +2,8 @@
 <html lang="{{config.locale}}">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{lang.login.login}} - {{config.site_title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="{{config.base_url}}/favicon.ico" />
     <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon.ico" />
     <link
       rel="icon"
@@ -39,14 +37,14 @@
     <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css" />
     <link
       rel="stylesheet"
-      href="{{config.base_url}}/lib/@fixhq/sweetalert2/dist/sweetalert2.min.css"
+      href="{{config.base_url}}/lib/sweetalert2/dist/sweetalert2.min.css"
     />
     <link rel="stylesheet" href="{{config.base_url}}/styles/login.css" />
     {{{config.analytics}}}
   </head>
 
   <body class="page-login">
-    <div class="login-container">
+    <main class="login-container">
       <div class="login-box">
         <div class="login-header">
           <h1 class="login-title">{{config.site_title}}</h1>
@@ -54,8 +52,8 @@
         </div>
 
         {{#googleoauth}}
-        <a href="/auth/login" class="google-signin">
-          <svg width="20" height="20" viewBox="0 0 48 48">
+        <a href="{{config.base_url}}/auth/login" class="google-signin">
+          <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
             <path
               fill="#EA4335"
               d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
@@ -73,79 +71,50 @@
               d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
             />
           </svg>
-          Sign in with Google
+          {{lang.login.googleSignIn}}
         </a>
 
         <div class="divider">
-          <span>or</span>
+          <span>{{lang.login.or}}</span>
         </div>
-        {{/googleoauth}} {{^googleoauth}}
-        <form role="form" action="" method="post" class="login-form">
-          <div class="form-group">
-            <label class="form-label" for="form-username"
-              >{{lang.login.username}}</label
-            >
-            <input
-              tabindex="1"
-              type="text"
-              name="username"
-              class="form-control"
-              id="form-username"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="form-password"
-              >{{lang.login.password}}</label
-            >
-            <input
-              tabindex="2"
-              type="password"
-              name="password"
-              class="form-control"
-              id="form-password"
-              required
-            />
-          </div>
-          <button type="submit" class="btn btn-login">
-            {{lang.login.login}}
-          </button>
-        </form>
-        {{/googleoauth}} {{#googleoauth}}
-        <form role="form" action="" method="post" class="login-form">
-          <div class="form-group">
-            <label class="form-label" for="form-username"
-              >{{lang.login.username}}</label
-            >
-            <input
-              tabindex="1"
-              type="text"
-              name="username"
-              class="form-control"
-              id="form-username"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="form-password"
-              >{{lang.login.password}}</label
-            >
-            <input
-              tabindex="2"
-              type="password"
-              name="password"
-              class="form-control"
-              id="form-password"
-              required
-            />
-          </div>
-          <button type="submit" class="btn btn-login">
-            {{lang.login.login}}
-          </button>
-        </form>
         {{/googleoauth}}
+        <form
+          action="{{config.base_url}}/rn-login"
+          method="post"
+          class="login-form"
+        >
+          <div class="form-group">
+            <label class="form-label" for="form-username"
+              >{{lang.login.username}}</label
+            >
+            <input
+              type="text"
+              name="username"
+              class="form-control"
+              id="form-username"
+              autocomplete="username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="form-password"
+              >{{lang.login.password}}</label
+            >
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="form-password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-login">
+            {{lang.login.login}}
+          </button>
+        </form>
       </div>
-    </div>
+    </main>
 
     <footer class="login-footer">
       {{#config.copyright}}
@@ -169,7 +138,7 @@
     ></script>
     <script src="{{config.base_url}}/lib/jquery/dist/jquery.min.js"></script>
     <script src="{{config.base_url}}/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{config.base_url}}/lib/@fixhq/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="{{config.base_url}}/lib/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="{{config.base_url}}/scripts/login.js"></script>
   </body>
 </html>
