@@ -1,1 +1,1 @@
-.search .page-title .category-label{color:#444}
+.search .page-title .category-label{color:var(--body-color);font-size:.875rem;font-weight:500}

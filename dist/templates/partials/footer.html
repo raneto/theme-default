@@ -1,4 +1,4 @@
-  </div>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -11,7 +11,7 @@
               <span class="copyright">{{{config.copyright}}}</span>
               <span class="separator">•</span>
               {{/config.copyright}}
-              <span class="powered-by">Powered by <a href="https://raneto.com" target="_blank" rel="opener">Raneto</a> with <a href="https://github.com/raneto/theme-default" target="_blank" rel="opener">Default Theme</a></span>
+              <span class="powered-by">Powered by <a href="https://raneto.com" target="_blank" rel="noopener">Raneto</a> with <a href="https://github.com/raneto/theme-default" target="_blank" rel="noopener">Default Theme</a></span>
             </p>
           </div>
         </div>
@@ -23,17 +23,17 @@
   {{#loggedIn}}
 
     <!-- Modal: Add Page -->
-    <div class="modal fade" id="addModal" tabindex="-1">
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">{{lang.global.addPage}}</h4>
+            <h4 class="modal-title" id="addModalLabel">{{lang.global.addPage}}</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{lang.global.close}}"></button>
           </div>
           <div class="modal-body">
             <div>
               <label for="page-name" class="form-label">{{lang.global.pageName}}:</label>
-              <input type="text" class="form-control" id="page-name">
+              <input type="text" class="form-control" id="page-name" required>
             </div>
           </div>
           <div class="modal-footer">
@@ -45,15 +45,15 @@
     </div>
 
     <!-- Modal: Delete Page -->
-    <div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
-            <h4 class="modal-title" id="myModalLabel">{{lang.global.reallyDeletePage}}</h4>
+            <h4 class="modal-title" id="deleteModalLabel">{{lang.global.reallyDeletePage}}</h4>
           </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">{{lang.global.no}}</button>
-            <button class="btn btn-primary" id="delete-page-confirm" type="button">{{lang.global.yes}}</button>
+            <button class="btn btn-danger" id="delete-page-confirm" type="button">{{lang.global.yes}}</button>
           </div>
         </div>
       </div>
@@ -65,8 +65,10 @@
   <!-- JavaScript -->
   <script src="{{config.base_url}}/lib/jquery/dist/jquery.min.js"></script>
   <script src="{{config.base_url}}/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{config.base_url}}/lib/sweetalert2/dist/sweetalert2.min.js"></script>
   <script src="{{config.base_url}}/lib/highlight.js/11.11.1/highlight.min.js"></script>
   <script src="{{config.base_url}}/lib/marked/lib/marked.umd.js"></script>
+  <script src="{{config.base_url}}/lib/dompurify/dist/purify.min.js"></script>
   <script src="{{config.base_url}}/scripts/editor.js"></script>
   <script src="{{config.base_url}}/scripts/raneto.js"></script>
 

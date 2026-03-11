@@ -1,6 +1,6 @@
 {{> header}}
 
-<div class="row jumbotron p-5">
+<search class="row jumbotron">
   <div class="col col-md-6 offset-md-3">
     <form class="search-form" action="{{config.base_url}}/">
       <div class="input-group">
@@ -10,7 +10,7 @@
         <input
           id="home-search"
           type="search"
-          class="form-control form-control-lg border-round-left"
+          class="form-control form-control-lg"
           name="search"
           placeholder="{{lang.home.searchKnowledgeBase}}"
         />
@@ -20,18 +20,20 @@
       </div>
     </form>
   </div>
-</div>
+</search>
 
-<div class="home-categories">
+<section class="home-categories">
   {{#pages}} {{#is_index}} {{#files.length}}
   <div class="col">
     <div class="card {{class}}">
       <h2 class="card-heading">{{lang.global.mainArticles}}</h2>
       <ul class="list-group pages">
         {{#files}}
-        <a href="{{config.base_url}}/{{slug}}" class="list-group-item page">
-          {{title}}
-        </a>
+        <li>
+          <a href="{{config.base_url}}/{{slug}}" class="list-group-item page">
+            {{title}}
+          </a>
+        </li>
         {{/files}}
       </ul>
     </div>
@@ -42,9 +44,11 @@
       <h2 class="card-heading">{{title}}</h2>
       <ul class="list-group pages">
         {{#files}} {{^is_directory}}
-        <a href="{{config.base_url}}/{{slug}}" class="list-group-item page">
-          {{title}}
-        </a>
+        <li>
+          <a href="{{config.base_url}}/{{slug}}" class="list-group-item page">
+            {{title}}
+          </a>
+        </li>
         {{/is_directory}} {{#is_directory}}
         <li class="list-group-item page">
           {{title}} {{#files}}
@@ -56,16 +60,18 @@
               >
             </li>
             {{/is_directory}} {{#is_directory}}
-            <li>{{title}}</li>
-            <ul>
-              {{#files}}
-              <li>
-                <a href="{{config.base_url}}/{{slug}}" class="sub-page-link"
-                  >{{title}}</a
-                >
-              </li>
-              {{/files}}
-            </ul>
+            <li>
+              {{title}}
+              <ul>
+                {{#files}}
+                <li>
+                  <a href="{{config.base_url}}/{{slug}}" class="sub-page-link"
+                    >{{title}}</a
+                  >
+                </li>
+                {{/files}}
+              </ul>
+            </li>
             {{/is_directory}}
           </ul>
           {{/files}}
@@ -75,6 +81,6 @@
     </div>
   </div>
   {{/is_index}} {{/pages}}
-</div>
+</section>
 
 {{> footer}}
