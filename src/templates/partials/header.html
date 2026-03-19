@@ -1,83 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{config.locale}}">
-<head>
-  <meta charset="utf-8">
-  <title>{{#meta.title}}{{meta.title}} - {{/meta.title}}{{config.site_title}}</title>
-  {{#meta.description}}<meta name="description" content="{{meta.description}}">{{/meta.description}}
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon.ico">
-  <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon-32x32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon-16x16.png" sizes="16x16" type="image/png">
-  <link rel="apple-touch-icon" href="{{config.base_url}}/v0.5.0/icons/apple-touch-icon.png" sizes="180x180">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      {{#meta.title}}{{meta.title}} - {{/meta.title}}{{config.site_title}}
+    </title>
+    {{#meta.description}}
+    <meta name="description" content="{{meta.description}}" />
+    {{/meta.description}}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="{{config.base_url}}/v0.5.0/icons/favicon.ico" />
+    <link
+      rel="icon"
+      href="{{config.base_url}}/v0.5.0/icons/favicon-32x32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="{{config.base_url}}/v0.5.0/icons/favicon-16x16.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{{config.base_url}}/v0.5.0/icons/apple-touch-icon.png"
+      sizes="180x180"
+    />
 
-  {{^config.rtl_layout}}
-  <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.min.css">
-  {{/config.rtl_layout}}
-  {{#config.rtl_layout}}
-  <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.rtl.css">
-  <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.rtl.min.css">
-  {{/config.rtl_layout}}
-  <link rel="stylesheet" href="{{config.base_url}}/lib/highlight.js/styles/a11y-light.min.css">
-  <script src="{{config.base_url}}/scripts/init.js" data-base-url="{{config.base_url}}" data-rtl="{{config.rtl_layout}}" data-csp-nonce="{{csp_nonce}}"></script>
-  <link rel="stylesheet" href="{{config.base_url}}/lib/sweetalert2/dist/sweetalert2.min.css">
-  <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
-  <link rel="stylesheet" href="{{config.base_url}}/styles/search.css">
-  <link rel="stylesheet" href="{{config.base_url}}/styles/edit.css">
+    {{^config.rtl_layout}}
+    <link
+      rel="stylesheet"
+      href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.min.css"
+    />
+    {{/config.rtl_layout}} {{#config.rtl_layout}}
+    <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.rtl.css" />
+    <link
+      rel="stylesheet"
+      href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    />
+    {{/config.rtl_layout}}
+    <link
+      rel="stylesheet"
+      href="{{config.base_url}}/lib/highlight.js/styles/a11y-light.min.css"
+    />
+    <script
+      src="{{config.base_url}}/scripts/init.js"
+      data-base-url="{{config.base_url}}"
+      data-rtl="{{config.rtl_layout}}"
+      data-csp-nonce="{{csp_nonce}}"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="{{config.base_url}}/lib/sweetalert2/dist/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css" />
+    <link rel="stylesheet" href="{{config.base_url}}/styles/search.css" />
+    <link rel="stylesheet" href="{{config.base_url}}/styles/edit.css" />
 
-  {{{config.analytics}}}
-
-</head>
-<body class="{{body_class}}">
-
-  <!-- Header -->
-  <header class="header">
-    <div class="container-fluid">
-      <div class="row justify-content-between">
-        <div class="col-auto">
-          <a href="{{config.base_url}}/" class="logo">{{config.site_title}}</a>
-        </div>
-        <div class="col-auto" id="search-and-login">
-          {{#config.googleoauth}}
-          <div class="float-end">
-            {{#config.authentication}} {{#loggedIn}}
-            <span id="login-username" class="me-2">{{profile.displayName}}</span>
-            <a id="btnLogout" href="{{config.base_url}}/auth/logout" class="btn btn-info">{{lang.login.logout}}</a> {{/loggedIn}} {{^loggedIn}}
-            <a id="btnLogin" href="{{config.base_url}}/auth/login" class="btn btn-info ms-2">{{lang.login.login}}</a> {{/loggedIn}} {{/config.authentication}}
+  </head>
+  <body class="{{body_class}}">
+    <!-- Header -->
+    <header class="header">
+      <div class="container-fluid">
+        <div class="row justify-content-between">
+          <div class="col-auto">
+            <a href="{{config.base_url}}/" class="logo"
+              >{{config.site_title}}</a
+            >
           </div>
-          {{/config.googleoauth}}
-
-          {{^config.googleoauth}}
-          <div class="float-end">
-            {{#config.authentication}}
-              {{#loggedIn}}
-                <div class="dropdown">
-                  <button id="btnUsername" class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{username}}
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnUsername">
-                    <li><a id="btnLogout" class="dropdown-item" href="{{config.base_url}}/logout">{{lang.login.logout}}</a></li>
-                  </ul>
-                </div>
-              {{/loggedIn}}
-              {{^loggedIn}}
-                <a id="btnLogin" href="{{config.base_url}}/login" class="btn btn-info ms-2">{{lang.login.login}}</a>
-              {{/loggedIn}}
-            {{/config.authentication}}
-          </div>
-          {{/config.googleoauth}}
-
-          <search class="float-end">
-          <form class="search-form" action="{{config.base_url}}/">
-            <div>
-              <label class="form-label visually-hidden" for="search">{{lang.global.search}}</label>
-              <input type="search" class="form-control" name="search" id="search" size="30" value="{{search}}" placeholder="{{lang.global.search}}">
+          <div class="col-auto" id="search-and-login">
+            {{#config.googleoauth}}
+            <div class="float-end">
+              {{#config.authentication}} {{#loggedIn}}
+              <span id="login-username" class="me-2"
+                >{{profile.displayName}}</span
+              >
+              <a
+                id="btnLogout"
+                href="{{config.base_url}}/auth/logout"
+                class="btn btn-info"
+                >{{lang.login.logout}}</a
+              >
+              {{/loggedIn}} {{^loggedIn}}
+              <a
+                id="btnLogin"
+                href="{{config.base_url}}/auth/login"
+                class="btn btn-info ms-2"
+                >{{lang.login.login}}</a
+              >
+              {{/loggedIn}} {{/config.authentication}}
             </div>
-          </form>
-          </search>
+            {{/config.googleoauth}} {{^config.googleoauth}}
+            <div class="float-end">
+              {{#config.authentication}} {{#loggedIn}}
+              <div class="dropdown">
+                <button
+                  id="btnUsername"
+                  class="btn btn-info dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {{username}}
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="btnUsername"
+                >
+                  <li>
+                    <a
+                      id="btnLogout"
+                      class="dropdown-item"
+                      href="{{config.base_url}}/logout"
+                      >{{lang.login.logout}}</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              {{/loggedIn}} {{^loggedIn}}
+              <a
+                id="btnLogin"
+                href="{{config.base_url}}/login"
+                class="btn btn-info ms-2"
+                >{{lang.login.login}}</a
+              >
+              {{/loggedIn}} {{/config.authentication}}
+            </div>
+            {{/config.googleoauth}}
+
+            <search class="float-end">
+              <form class="search-form" action="{{config.base_url}}/">
+                <div>
+                  <label class="form-label visually-hidden" for="search"
+                    >{{lang.global.search}}</label
+                  >
+                  <input
+                    type="search"
+                    class="form-control"
+                    name="search"
+                    id="search"
+                    size="30"
+                    value="{{search}}"
+                    placeholder="{{lang.global.search}}"
+                  />
+                </div>
+              </form>
+            </search>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main -->
-  <main class="container-fluid">
+    <!-- Main -->
+    <main class="container-fluid">

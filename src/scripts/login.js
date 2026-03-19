@@ -31,13 +31,14 @@ jQuery(document).ready(function () {
 
     if ($(this).find(".input-error").length === 0) {
       $.post(base_url + "/rn-login", $(this).serialize(), function (data) {
+        var success = data.status === 0;
         Swal.fire({
-          icon: data.status ? "success" : "warning",
+          icon: success ? "success" : "warning",
           title: data.message,
-          timer: data.status ? 1000 : null,
+          timer: success ? 1000 : null,
           showConfirmButton: true,
         }).then(function () {
-          if (data.status) {
+          if (success) {
             window.location = base_url + "/";
           }
         });
