@@ -1,6 +1,10 @@
 # Changelog
 
-## UNRELEASED / v0.9.0
+## 2026.03.18 / v0.9.1
+
+- **[Edit]** Google Analytics
+
+## 2026.03.10 / v0.9.0
 
 - **[Deps]** Upgrading CodeMirror from v5.65.21 to v6.0.2
 - **[Deps]** Packaging Highlight.js locally
